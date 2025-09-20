@@ -2,6 +2,7 @@
 import express from 'express';
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ if (!DB_USER || !DB_HOST || !DB_NAME || !DB_PASSWORD) {
 
 const app = express();
 app.use(express.json());
+app.use(cors()); // Permite que o frontend acesse o backend
 
 // Configuração da conexão com o banco de dados
 const pool = new Pool({
@@ -39,7 +41,7 @@ app.get('/', (req, res) => {
     res.send('API do projeto de Engenharia de Software está online!');
 });
 
-// NOVA ROTA: Rota para buscar todos os usuários
+// Rota para buscar todos os usuários
 // app.get('/users', async (req, res) => {
 //     try {
 //         const result = await pool.query('SELECT * FROM users ORDER BY created_at DESC');
