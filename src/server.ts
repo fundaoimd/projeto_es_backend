@@ -42,15 +42,15 @@ app.get('/', (req, res) => {
 });
 
 // Rota para buscar todos os usuários
-// app.get('/users', async (req, res) => {
-//     try {
-//         const result = await pool.query('SELECT * FROM users ORDER BY created_at DESC');
-//         res.json(result.rows);
-//     } catch (err) {
-//         console.error('Erro ao buscar usuários:', err);
-//         res.status(500).send('Erro no servidor');
-//     }
-// });
+app.get('/users', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM users ORDER BY created_at DESC');
+        res.json(result.rows);
+    } catch (err) {
+        console.error('Erro ao buscar usuários:', err);
+        res.status(500).send('Erro no servidor');
+    }
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
