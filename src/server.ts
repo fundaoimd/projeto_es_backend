@@ -5,15 +5,23 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+// Verifica se as variáveis de ambiente necessárias estão definidas
+const { DB_USER, DB_HOST, DB_NAME, DB_PASSWORD } = process.env;
+
+if (!DB_USER || !DB_HOST || !DB_NAME || !DB_PASSWORD) {
+    console.error('Erro: Variáveis de ambiente do banco de dados não estão configuradas corretamente no arquivo .env.');
+    process.exit(1); // Encerra o processo com um código de erro
+}
+
 const app = express();
 app.use(express.json());
 
 // Configuração da conexão com o banco de dados
 const pool = new Pool({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASSWORD,
+    user: DB_USER,
+    host: DB_HOST,
+    database: DB_NAME,
+    password: DB_PASSWORD,
     port: 5432,
 });
 
