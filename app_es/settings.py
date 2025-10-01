@@ -16,6 +16,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    # Apps do projeto (adicione a sua aqui)
+    'api.apps.ApiConfig',
+
+    # Apps de terceiros
     'rest_framework',
     'corsheaders',
     'drf_spectacular',
@@ -97,8 +101,11 @@ REST_FRAMEWORK = {
 }
 
 # CORS
-if DEBUG:
-    CORS_ALLOW_ALL_ORIGINS = True
-else:
-    CORS_ALLOW_ALL_ORIGINS = False
-    CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', cast=Csv())
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # Endereço padrão do servidor de desenvolvimento do Vite
+    "http://127.0.0.1:5173",
+]
+
+# Se você preferir, pode também usar a configuração abaixo que permite qualquer origem
+# APENAS em modo de desenvolvimento (DEBUG=True). É menos seguro, mas funciona.
+# CORS_ALLOW_ALL_ORIGINS = DEBUG

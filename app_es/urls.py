@@ -3,5 +3,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('rest_framework.urls')),  # rota padrão do DRF
+    # A linha abaixo já existe, mas a próxima é a que você precisa adicionar
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/', include('api.urls')),  # Adicione esta linha
 ]
