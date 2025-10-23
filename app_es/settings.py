@@ -5,8 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY', default='fallback_secret_key')
 DEBUG = config('DEBUG', default=True, cast=bool)
-
-ALLOWED_HOSTS = ['*']  # Em produção, coloque os domínios reais
+CORS_ALLOW_ALL_ORIGINS = config('CORS_ALLOW_ALL_ORIGINS', default=False, cast=bool)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -122,4 +121,4 @@ SPECTACULAR_SETTINGS = {
 }
 # Se você preferir, pode também usar a configuração abaixo que permite qualquer origem
 # APENAS em modo de desenvolvimento (DEBUG=True). É menos seguro, mas funciona.
-# CORS_ALLOW_ALL_ORIGINS = DEBUG
+CORS_ALLOW_ALL_ORIGINS = DEBUG
