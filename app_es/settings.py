@@ -105,7 +105,21 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Endereço padrão do servidor de desenvolvimento do Vite
     "http://127.0.0.1:5173",
 ]
-
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Arena Competidor API",
+    "DESCRIPTION": "Documentação da API",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "SECURITY": [ { "bearerAuth": [] } ],
+    "COMPONENT_SPLIT_REQUEST": True,
+    "SECURITY_SCHEMES": {
+        "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT",
+        }
+    },
+}
 # Se você preferir, pode também usar a configuração abaixo que permite qualquer origem
 # APENAS em modo de desenvolvimento (DEBUG=True). É menos seguro, mas funciona.
 # CORS_ALLOW_ALL_ORIGINS = DEBUG
