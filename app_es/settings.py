@@ -102,8 +102,10 @@ REST_FRAMEWORK = {
 
 # CORS
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # Endereço padrão do servidor de desenvolvimento do Vite
-    "http://127.0.0.1:5173",
+    "http://localhost:5173",  # Mantenha se quiser
+    "http://127.0.0.1:5173",  # Mantenha se quiser
+    "http://localhost:8080",  # Adicionado: Porta do Vue/Vite (vite.config.ts)
+    "http://127.0.0.1:8080",  # Adicionado
 ]
 
 # Se você preferir, pode também usar a configuração abaixo que permite qualquer origem
